@@ -1,10 +1,15 @@
 const gridContainer = document.querySelector(".container");
-const divs = document.getElementsByClassName("cell")
+const divs = document.getElementsByClassName("cell");
+const button = document.querySelector("#btn");
+
+defaultGrid();
 
 
+function defaultGrid(){
+  createBoxes(16);
+};
 
-
-//Function that create a grid of empty box's 
+  //Function that create a grid of empty box's 
 function createBoxes(boxsPerRow) {
   const total = (boxsPerRow * boxsPerRow) + boxsPerRow; //extra boxPerRow added to total to supplement lost divs needed to flex to new row in grid
   const newRowNum = boxsPerRow + 1;  
@@ -27,7 +32,8 @@ function createBoxes(boxsPerRow) {
   }
 };
 
-createBoxes(16);
+
+
 
 let divsArray = Array.from(divs);
 
@@ -39,3 +45,16 @@ divsArray.forEach((el) => {
 
   })
 });
+
+
+button.addEventListener("click", (event) => {
+  let sumOfCells;
+
+  do {
+    sumOfCells = prompt("Please select the amount of cells you wish to have in your grid. MIN 4, MAX 100");
+    console.log(sumOfCells);
+  } while ((sumOfCells < 4) || (sumOfCells > 100));
+    
+});
+
+

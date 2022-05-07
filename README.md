@@ -1,1 +1,1 @@
-# Etch-a-Sketch
+Etch-a-Sketch project created while learning from The Odin Project. Link to project page ---> https://www.theodinproject.com/lessons/foundations-etch-a-sketch

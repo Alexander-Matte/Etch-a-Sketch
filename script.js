@@ -1,4 +1,6 @@
 const gridContainer = document.querySelector(".container");
+const divs = document.getElementsByClassName("cell")
+
 
 
 
@@ -26,3 +28,14 @@ function createBoxes(boxsPerRow) {
 };
 
 createBoxes(16);
+
+let divsArray = Array.from(divs);
+
+//Iterates through every div cell and changes background color to black as it enters it.
+divsArray.forEach((el) => {
+  // Do stuff here
+  el.addEventListener("mouseenter", (event) => {
+    el.style.backgroundColor = "black";
+
+  })
+});

@@ -2,16 +2,65 @@ const gridContainer = document.querySelector(".container");
 const divs = document.getElementsByClassName("cell");
 const button = document.querySelector("#btn");
 
-defaultGrid();
+
+defaultGrid();//Creates initial 16x16 grid.
 
 
+
+//Takes the array like object and make it into an array.
+let divsArray = Array.from(divs);
+
+//Iterates through every div cell and changes background color to black as it enters it.
+divsArray.forEach((el) => {
+  // Do stuff here
+  el.addEventListener("mouseenter", (event) => {
+    el.style.backgroundColor = "black";
+
+  })
+});
+
+
+
+
+
+
+
+
+
+//Click listener that when clicked prompts user for new grid size. Creates new grid and adds listener to new grid to track mouse.
+button.addEventListener("click", (event) => {
+  let sumOfCells;
+
+  do {
+    sumOfCells = Number(prompt("Please select the amount of cells you wish to have horizontally across your grid. MIN 2, MAX 100"));
+  } while ((sumOfCells < 2) || (sumOfCells > 100));
+
+  deleteGrid();
+  createBoxes(sumOfCells);
+
+  divsArray = Array.from(divs);
+
+  divsArray.forEach((el) => {
+    el.addEventListener("mouseenter", (event) => {
+      el.style.backgroundColor = "black";
+  
+    })
+  });
+});
+
+
+
+
+
+//Creates a default grid of 16 x 16.
 function defaultGrid(){
   createBoxes(16);
 };
 
-  //Function that create a grid of empty box's 
+
+//Function that create a grid of empty box's 
 function createBoxes(boxsPerRow) {
-  const total = (boxsPerRow * boxsPerRow) + boxsPerRow; //extra boxPerRow added to total to supplement lost divs needed to flex to new row in grid
+  const total = (boxsPerRow * boxsPerRow) + boxsPerRow; //extra boxPerRow added to total to supplement divs needed to flex to new row in grid
   const newRowNum = boxsPerRow + 1;  
   let cellSize = 600/boxsPerRow + "px";
 
@@ -33,28 +82,12 @@ function createBoxes(boxsPerRow) {
 };
 
 
+function deleteGrid(){
+  divsArray.forEach(element => {
+    element.remove();
+  });
+};
 
 
-let divsArray = Array.from(divs);
-
-//Iterates through every div cell and changes background color to black as it enters it.
-divsArray.forEach((el) => {
-  // Do stuff here
-  el.addEventListener("mouseenter", (event) => {
-    el.style.backgroundColor = "black";
-
-  })
-});
-
-
-button.addEventListener("click", (event) => {
-  let sumOfCells;
-
-  do {
-    sumOfCells = prompt("Please select the amount of cells you wish to have in your grid. MIN 4, MAX 100");
-    console.log(sumOfCells);
-  } while ((sumOfCells < 4) || (sumOfCells > 100));
-    
-});
 
 
